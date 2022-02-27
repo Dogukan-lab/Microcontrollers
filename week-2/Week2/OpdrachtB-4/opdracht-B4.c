@@ -19,7 +19,7 @@ void wait( int ms ) {
 
 typedef struct PATTERN_STRUCT {
 	unsigned char data;
-}PATTERN_STRUCT;
+} PATTERN_STRUCT;
 
 PATTERN_STRUCT pattern[] = {
 	{0x40}, {0x20}, {0x01}, {0x02}, {0x40}, {0x10}, {0x08}, {0x04}
