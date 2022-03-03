@@ -75,7 +75,6 @@ void init_4bits_mode(void) {
 	DDRA = 0xFF;
 	PORTC = 0x00;
 	PORTA = 0x00;
-	//PORTA = 0xFF;
 
 	// Step 2 (table 12)
 	PORTC = 0x20;	// function set
@@ -182,16 +181,20 @@ int main( void ) {
 	init_4bits_mode();
 	
 	_delay_ms(10);
-	
 	lcd_clear();
 
 	// Write sample string
-	lcd_write_string("Hello world");
+	lcd_write_string("Sample string");
 
 	// Loop forever
 	while (1) {
-		PORTC ^= (1<<0);	// Toggle PORTD.7
-		wait( 250 );
+		//PORTD ^= (1<<0);	// Toggle PORTD.7
+		//lcd_clear();
+		//lcd_write_string("Hello world");
+		//_delay_ms(2000);
+		//lcd_clear();
+		//lcd_write_string("SIKE LMAO");
+		//_delay_ms(2000);
 	}
 
 	return 1;
