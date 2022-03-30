@@ -7,7 +7,7 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B1", "Opdracht-B1\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "twan-jesse_voorbeeldcode", "twan-jesse_voorbeeldcode\twan-jesse_voorbeeldcode.cproj", "{7EAD2C79-7A82-4357-97F1-F5B1F4410228}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B2", "Opdracht-B2\Opdracht-B2.cproj", "{451A160C-3FE8-4AAD-8D0F-AD34C2A722C3}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B2", "Opdracht-B2\Opdracht-B2.cproj", "{8D2412DA-E29B-4039-A859-B8E192F112C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Debug|AVR.Build.0 = Debug|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Release|AVR.ActiveCfg = Release|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Release|AVR.Build.0 = Release|AVR
-		{451A160C-3FE8-4AAD-8D0F-AD34C2A722C3}.Debug|AVR.ActiveCfg = Debug|AVR
-		{451A160C-3FE8-4AAD-8D0F-AD34C2A722C3}.Debug|AVR.Build.0 = Debug|AVR
-		{451A160C-3FE8-4AAD-8D0F-AD34C2A722C3}.Release|AVR.ActiveCfg = Release|AVR
-		{451A160C-3FE8-4AAD-8D0F-AD34C2A722C3}.Release|AVR.Build.0 = Release|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Debug|AVR.ActiveCfg = Debug|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Debug|AVR.Build.0 = Debug|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Release|AVR.ActiveCfg = Release|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
