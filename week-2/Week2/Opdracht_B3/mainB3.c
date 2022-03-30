@@ -1,6 +1,7 @@
 /*
  * main.c
- *
+ * In deze opdracht wordt de 7-segment display gebruikt om nummers op te tellen
+ * De communicatie om het op te tellen wordt via een interrupt gedaan
  * Created: 2/9/2022 1:12:30 PM
  *  Author: doguk
  */ 
