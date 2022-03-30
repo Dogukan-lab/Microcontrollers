@@ -1,4 +1,3 @@
-#pragma region basic_includes
 
 #define F_CPU 8e6
 
@@ -7,7 +6,6 @@
 #include <avr/interrupt.h>
 #include "lcd.h"
 
-#pragma endregion basic_includes
 
 void lcd_strobe_lcd_e(void) {
 	PORTA |= (1<<LCD_E);	// E high
@@ -126,6 +124,7 @@ int main (void) {
 	
 	while(1){
 		//Do nothing in here, not necessary
+	
 	}
 	
 	return 1;
