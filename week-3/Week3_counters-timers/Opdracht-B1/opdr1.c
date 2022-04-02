@@ -22,25 +22,27 @@ void wait( int ms ) {
 	}
 }
 
+
+
 int main( void ) {
 	// Init I/O
 	DDRD &= ~BIT(7);		// PD7 op input: DDRD=xxxx xxx0
 	TCCR2 = 0b00000111;		// counting via PD7, rising edge	// PORTD(7) output, PORTD(6:0) input
 	
+	lcd_init_bruh();
 	_delay_ms(1500);
-	init_4bits_mode();
 	
 	// Loop forever
 	while (1) {
 		lcd_clear();
-		
+				
 		int value = TCNT2;
 		char text[16];
 		
 		sprintf(text, "Clicks: %d", value);
 		
-		lcd_write_string((char *) value);
-		_delay_ms(500);
+		lcd_write_string(text);
+		_delay_ms(1000);
 	}
 
 	return 0;

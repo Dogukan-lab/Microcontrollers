@@ -5,11 +5,9 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B1", "Opdracht-B1\Opdracht-B1.cproj", "{2285C48D-296E-43FD-A7B6-69885F64CFFD}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test-counter", "test-counter\test-counter.cproj", "{EA53F1B3-E985-45F8-91AC-3FD2870CABEE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{D18C06EA-E6D4-4CC6-8CF3-94CC47DF4D8D}"
-EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "twan-jesse_voorbeeldcode", "twan-jesse_voorbeeldcode\twan-jesse_voorbeeldcode.cproj", "{7EAD2C79-7A82-4357-97F1-F5B1F4410228}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B2", "Opdracht-B2\Opdracht-B2.cproj", "{8D2412DA-E29B-4039-A859-B8E192F112C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +19,14 @@ Global
 		{2285C48D-296E-43FD-A7B6-69885F64CFFD}.Debug|AVR.Build.0 = Debug|AVR
 		{2285C48D-296E-43FD-A7B6-69885F64CFFD}.Release|AVR.ActiveCfg = Release|AVR
 		{2285C48D-296E-43FD-A7B6-69885F64CFFD}.Release|AVR.Build.0 = Release|AVR
-		{EA53F1B3-E985-45F8-91AC-3FD2870CABEE}.Debug|AVR.ActiveCfg = Debug|AVR
-		{EA53F1B3-E985-45F8-91AC-3FD2870CABEE}.Debug|AVR.Build.0 = Debug|AVR
-		{EA53F1B3-E985-45F8-91AC-3FD2870CABEE}.Release|AVR.ActiveCfg = Release|AVR
-		{EA53F1B3-E985-45F8-91AC-3FD2870CABEE}.Release|AVR.Build.0 = Release|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Debug|AVR.ActiveCfg = Debug|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Debug|AVR.Build.0 = Debug|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Release|AVR.ActiveCfg = Release|AVR
 		{7EAD2C79-7A82-4357-97F1-F5B1F4410228}.Release|AVR.Build.0 = Release|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Debug|AVR.ActiveCfg = Debug|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Debug|AVR.Build.0 = Debug|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Release|AVR.ActiveCfg = Release|AVR
+		{8D2412DA-E29B-4039-A859-B8E192F112C3}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
