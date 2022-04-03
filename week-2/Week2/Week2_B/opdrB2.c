@@ -11,19 +11,15 @@ void wait( int ms ) {
 
 // Goes 1 led backwards 
 ISR( INT0_vect ) {
-	
 	if(PORTC > 0x01) PORTC >>= 1;
 	else PORTC = 0x01;
-	
 	wait(500);
 }
 
 // Goes 1 led forward 
 ISR( INT1_vect ) {
-	
 	if (PORTC < 0x80) PORTC <<= 1;
 	else PORTC = 0x80;
-		 
 	wait(500);
 }
 
