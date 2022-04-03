@@ -6,7 +6,6 @@
 #include <avr/interrupt.h>
 #include "lcd.h"
 
-
 void lcd_strobe_lcd_e(void) {
 	PORTA |= (1<<LCD_E);	// E high
 	_delay_ms(1);			// nodig
@@ -45,6 +44,12 @@ void init_4bits_mode() {
 * Does it in two nibbles
 * First nibble is 1st 4 bits, second nibble 2nd 4 bits
 */
+
+/*
+ * This function send a byte to the LCD
+ * This happens in 2 4-bit messages,
+ * Because the LCD is in 4-bit mode.
+ */ 
 void lcd_write_data(unsigned char byte) {
 	//First nibble
 	PORTC = byte;
@@ -124,7 +129,6 @@ int main (void) {
 	
 	while(1){
 		//Do nothing in here, not necessary
-	
 	}
 	
 	return 1;
