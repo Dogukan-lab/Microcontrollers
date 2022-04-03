@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "B_1", "Week2\B_1.cproj", "{2285C48D-296E-43FD-A7B6-69885F64CFFD}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Week2_B", "Week2_B\Week2_B.cproj", "{781C5841-ED63-4165-8F0F-AD0FBD89FDAD}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B2", "Week2_B\Opdracht-B2.cproj", "{781C5841-ED63-4165-8F0F-AD0FBD89FDAD}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht_B3", "Opdracht_B3\Opdracht_B3.cproj", "{719EA35E-DFE1-461B-9BB3-F65E50C06DC0}"
 EndProject
