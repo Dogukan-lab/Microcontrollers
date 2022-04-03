@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>Opdracht-B1</AssemblyName>
-    <Name>Opdracht-B1</Name>
-    <RootNamespace>Opdracht-B1</RootNamespace>
+    <AssemblyName>Week1</AssemblyName>
+    <Name>Opdracht-B6</Name>
+    <RootNamespace>Week1</RootNamespace>
     <ToolchainFlavour>XC8_2.31</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -91,13 +91,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="lcd.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lcd.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="opdr1.c">
+    <Compile Include="opdrB6.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

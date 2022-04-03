@@ -1,8 +1,9 @@
 /*
  * main.c
- *
+ * In deze opdracht wordt de 7-segment display gebruikt om nummers op te tellen
+ * De communicatie om het op te tellen wordt via een interrupt gedaan
  * Created: 2/9/2022 1:12:30 PM
- *  Author: doguk
+ *  Author: Dogukan
  */ 
 
 #include <xc.h>
@@ -11,7 +12,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-int digit = 0;
+int digit = 0; // Digit currently needed to display
 
 void wait( int ms ) {
 	for (int i=0; i<ms; i++) {
@@ -20,7 +21,7 @@ void wait( int ms ) {
 }
 
 const unsigned char Numbers [16] = {
-	// dPgfe dcba
+	// dPgfe dcba <-- Order of the segment display
 	0x3F, // 0
 	0x06, // 1
 	0x5B, // 2
@@ -112,11 +113,10 @@ void segmentDisplay (int digit){
 ISR( INT0_vect ) {	
 	wait(1000);
 	if(digit > 15){
-		 //digit = 0; 
 		 PORTE = Numbers[14];
 		 return;
 	}
-	segmentDisplay(digit); 
+	segmentDisplay(digit); // Displays current digit on 7 segment display
 	digit++;
 }
 

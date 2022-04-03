@@ -1,37 +1,31 @@
 /*
- * counter_t2_interrupt.c
+ * main.c
  *
- * Created: 21/02/2021 13:00:25
- * Author : Etienne
+ * Created: 2/23/2022 11:30:40 AM
+ *  Author: doguk
  */ 
 
+#include <xc.h>
 #define F_CPU 8e6
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
-
-#define BIT(x)			(1 << (x))
-
+#include "lcd.h"
 #define LCD_E 	6  // RA6 UNI-6
 #define LCD_RS	4  // RA4 UNI-6
 
-void lcd_strobe_lcd_e(void);
-void init_4bits_mode(void);
-void lcd_write_string(const char *str);
-void lcd_write_data(unsigned char byte);
-void lcd_write_cmd(unsigned char byte);
-void lcd_clear(void);
+#define BIT(x) 1 << (x);
 
-// wait(): busy waiting for 'ms' millisecond
-// Used library: util/delay.h
-void wait( int ms ) {
-	for (int tms=0; tms<ms; tms++) {
-		_delay_ms( 1 );			// library function (max 30 ms at 8MHz)
-	}
-}
 
 volatile int TimerPreset = -10;  // 0xF6, 10 till overflow
 volatile int tenthValue = 0;
+
+void wait( int ms ) {
+	for (int i=0; i<ms; i++) {
+		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
+	}
+}
 
 void lcd_strobe_lcd_e(void) {
 	PORTA |= (1<<LCD_E);	// E high
@@ -43,10 +37,9 @@ void lcd_strobe_lcd_e(void) {
 void init_4bits_mode(void) {
 	// PORTC output mode and all low (also E and RS pin)
 	DDRD = 0xFF;
-	DDRB = 0xFF;
+	DDRA = 0xFF;
 	PORTC = 0x00;
 	PORTA = 0x00;
-	//PORTA = 0xFF;
 
 	// Step 2 (table 12)
 	PORTC = 0x20;	// function set
@@ -68,16 +61,11 @@ void init_4bits_mode(void) {
 	PORTC = 0x00;   // Entry mode set
 	lcd_strobe_lcd_e();
 	PORTC = 0x60;
-	lcd_strobe_lcd_e();
+	lcd_strobe_lcd_e();	
 }
 
 void lcd_write_string(const char *str) {
-	// Het kan met een while:
 
-	// while(*str) {
-	// 	lcd_write_data(*str++);
-	// }
-	
 	// of met een for:
 	for(;*str; str++){
 		lcd_write_data(*str);
@@ -114,10 +102,13 @@ void lcd_write_command(unsigned char byte) {
 void lcd_clear() {
 	lcd_write_command (0x01);						//Leeg display
 	_delay_ms(2);
-	_delay_ms(100);
-	lcd_write_command (0x80);						//Cursor terug naar start
+	
+	lcd_write_command(0X02);
+	_delay_ms(10);
+	
+	
+	//lcd_write_command (0x80);						//Cursor terug naar start
 }
-
 
 
 
@@ -125,29 +116,36 @@ void lcd_clear() {
 ISR( TIMER2_OVF_vect ) {
 	TCNT2 = TimerPreset;	// Preset value
 	tenthValue++;		// Increment counter
+	lcd_write_string((char *) tenthValue);
 }
 
-// Initialize timer2
-void timer2Init( void ) {
+void init_timer( void ) {
 	TCNT2 = TimerPreset;	// Preset value of counter 2
 	TIMSK |= BIT(6);		// T2 overflow interrupt enable
 	sei();				// turn_on intr all
 	TCCR2 = 0x07;		// Initialize T2: ext.counting, rising edge, run
 }
 
-int main(void) {
+int main( void ) {
+	// Init I/O
+	DDRD &= ~BIT(7);
+	PORTC = 0xFF;	
 	
-	DDRD &= ~BIT(7);		// PD7 op input: DDRD=xxxx xxx0
-	DDRA = 0xFF;			// set PORTA for output (shows countregister)
-							// set PORTB for output (shows tenthvalue)
 	
-	timer2Init();
+	// Init LCD
 	init_4bits_mode();
-	const char* str = "Hello 123";
-lcd_write_string(str);
+	
+	_delay_ms(10);
+	
+	lcd_clear();
+
+	_delay_ms(10);
+
+	init_timer();
+	// Loop forever
 	while (1) {
-		PORTA = TCNT2;		// show value counter 2
-		PORTB = tenthValue;	// show value tenth counter
-		wait(10);
+		wait( 250 );
 	}
-}
+
+	return 1;
+}	

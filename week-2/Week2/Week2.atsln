@@ -5,13 +5,15 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "B_1", "Week2\B_1.cproj", "{2285C48D-296E-43FD-A7B6-69885F64CFFD}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Week2_B", "Week2_B\Week2_B.cproj", "{781C5841-ED63-4165-8F0F-AD0FBD89FDAD}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B2", "Week2_B\Opdracht-B2.cproj", "{781C5841-ED63-4165-8F0F-AD0FBD89FDAD}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht_B3", "Opdracht_B3\Opdracht_B3.cproj", "{719EA35E-DFE1-461B-9BB3-F65E50C06DC0}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "OpdrachtB-4", "OpdrachtB-4\OpdrachtB-4.cproj", "{4CAAB7C0-6C9F-47E8-A290-FFAF02378059}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht_B4", "OpdrachtB-4\Opdracht_B4.cproj", "{4CAAB7C0-6C9F-47E8-A290-FFAF02378059}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B5", "Opdracht-B5\Opdracht-B5.cproj", "{37ED6E38-44F7-43E9-8767-E16F0DC57520}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LCD_Example", "LCD_Example\LCD_Example.cproj", "{1DB9F0B7-4F9B-4965-B675-8BD6BEE2D838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{37ED6E38-44F7-43E9-8767-E16F0DC57520}.Debug|AVR.Build.0 = Debug|AVR
 		{37ED6E38-44F7-43E9-8767-E16F0DC57520}.Release|AVR.ActiveCfg = Release|AVR
 		{37ED6E38-44F7-43E9-8767-E16F0DC57520}.Release|AVR.Build.0 = Release|AVR
+		{1DB9F0B7-4F9B-4965-B675-8BD6BEE2D838}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1DB9F0B7-4F9B-4965-B675-8BD6BEE2D838}.Debug|AVR.Build.0 = Debug|AVR
+		{1DB9F0B7-4F9B-4965-B675-8BD6BEE2D838}.Release|AVR.ActiveCfg = Release|AVR
+		{1DB9F0B7-4F9B-4965-B675-8BD6BEE2D838}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
