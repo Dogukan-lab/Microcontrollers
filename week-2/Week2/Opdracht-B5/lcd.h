@@ -12,6 +12,7 @@
 #define LCD_RS	4  // RA4 UNI-6
 
 void init_lcd();
+void repeat_write(const char *str);
 void display_text(char *str);
 void set_cursor(int position);
 void lcd_write_string(const char *str);
