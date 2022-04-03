@@ -38,10 +38,10 @@ void wait(int ms)
 // Writes commands to 7 segment display with data after
 // Starts and cleans itself up for communication reasons
 void spi_write_word(unsigned char adress, unsigned char data) {
-	spi_slaveSelect(0);				// Select display chip
+	spi_slaveSelect(SPI_SS);				// Select display chip
 	spi_write(adress); 				// Set Register
 	spi_write(data); 				// Set data to send
-	spi_slaveDeSelect(0);			// End communication
+	spi_slaveDeSelect(SPI_SS);			// End communication
 }
 
 // Inits the spi MOSI communication
@@ -128,7 +128,7 @@ int main()
 	// write 4-digit data  
  	for (char i = 1; i <= 4; i++)
   	{
-		spi_write_word(i, 2);
+		spi_write_word(i, i);
 		wait(1000);
   	}
 
