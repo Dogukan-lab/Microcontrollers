@@ -25,13 +25,10 @@ PATTERN_STRUCT pattern[] = {
 	{0x40}, {0x20}, {0x01}, {0x02}, {0x40}, {0x10}, {0x08}, {0x04}
 };
 
+// Loopt door de pattern-array heen per iteratie wordt het weergeven op het AVR Bord, dit is op PortE te zien.
 int main(void)
 {
-	DDRE = 0xFF;
-	
-	EICRA |= 0x0B;
-	EIMSK = 0x03;
-	sei();
+	DDRE = 0xFF; // Zet port E open voor output
 	
 	int count = 0; //Om door de array heen te lopen
 	int arraySize = sizeof pattern / sizeof pattern[0];
