@@ -13,6 +13,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B3", "Opdracht-B3\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B4", "Opdracht-B4\Opdracht-B4.cproj", "{249ACFE0-B1E9-451D-98C6-3E6CADD2E11C}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Opdracht-B5", "Opdracht-B5\Opdracht-B5.cproj", "{AE7FF8E2-B657-4A76-A4FB-9C5EB91DBE9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -39,6 +41,10 @@ Global
 		{249ACFE0-B1E9-451D-98C6-3E6CADD2E11C}.Debug|AVR.Build.0 = Debug|AVR
 		{249ACFE0-B1E9-451D-98C6-3E6CADD2E11C}.Release|AVR.ActiveCfg = Release|AVR
 		{249ACFE0-B1E9-451D-98C6-3E6CADD2E11C}.Release|AVR.Build.0 = Release|AVR
+		{AE7FF8E2-B657-4A76-A4FB-9C5EB91DBE9F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{AE7FF8E2-B657-4A76-A4FB-9C5EB91DBE9F}.Debug|AVR.Build.0 = Debug|AVR
+		{AE7FF8E2-B657-4A76-A4FB-9C5EB91DBE9F}.Release|AVR.ActiveCfg = Release|AVR
+		{AE7FF8E2-B657-4A76-A4FB-9C5EB91DBE9F}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
