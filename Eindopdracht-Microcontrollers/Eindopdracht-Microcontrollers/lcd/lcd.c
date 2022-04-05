@@ -8,7 +8,6 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <avr/interrupt.h>
 #include "lcd.h"
 
 void lcd_strobe_lcd_e(void) {
@@ -101,6 +100,7 @@ void init_lcd() {
 	init_4bits_mode();
 	_delay_ms(10);
 	lcd_clear();
+	_delay_ms(10);
 }
 
 /*
