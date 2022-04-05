@@ -53,27 +53,7 @@ int check_state() {
 	return 0;	
 }
 
-/*
- * Timer interrupt
- * After TIMER_TRIGGER_VAL reached check state of LDR
- */
-ISR(TIMER2_COMP_vect) {
-	if (OCR2 == TIMER_TRIGGER_VAL) {
-		OCR2 = 0; // Reset Comparator
-		switch(check_state()){
-			case 0:
-				repeat_write("TRIGGERED");
-				stop_timer();
-				break;
-			case 1:
-				repeat_write("NOT TRIGGERED");
-				break;
-		}
-	} 
-	else {
-		OCR2 = TIMER_TRIGGER_VAL; // Reset Comparator
-	}
-}
+
 
 /*
  * Initializes all components for LDR reading
@@ -82,19 +62,24 @@ void init_ldr(void) {
 	DDRA = 0xFF;
 	DDRF = 0x00;
 	
-	TIMSK |= (1 << 7); //Sets interrupt for timer 2
-	TCCR2 |= 0b00001101; //set CTC mode
-	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
-	
 	adcInit();
 	_delay_ms(100);
 }
 
+/*
+ * Starts timer up again
+ * Used when stop_timer has been called,
+ * And timer is needed again for laser detection
+ */
 void start_timer() {
 	TCCR2 |= 0b00001101; //set CTC mode
 	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
 }
 
+/*
+ * Stops the timer
+ * When a person has been detected
+ */
 void stop_timer() {
 	TCCR2 = 0x00;
 }

@@ -89,6 +89,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="command_center\command_center.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="command_center\command_center.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lcd\lcd.c">
       <SubType>compile</SubType>
     </Compile>
@@ -108,6 +114,7 @@
   <ItemGroup>
     <Folder Include="lcd" />
     <Folder Include="ldr" />
+    <Folder Include="command_center" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
