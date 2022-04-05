@@ -55,6 +55,23 @@ ISR(TIMER2_COMP_vect) {
 	}
 }
 
+void test_code() {
+	
+	char text[16];
+	
+	ADCSRA |= (1 << ADSC);				// Start conversion
+	//while(ADCSRA & (1 << ADSC));		// Wait till conversion completed
+	
+	if(ldr_getlux(ADCH) < 6200) {
+	repeat_write("IN RANGE");
+	}
+	else {
+	repeat_write("OUT OF RANGE");
+	}
+	sprintf(text, "Value is: %d", ldr_getlux(ADCH));
+	repeat_write(text);
+}
+
 int main(void) {
 	
 	sei(); // Turn on interrupts
@@ -67,20 +84,7 @@ int main(void) {
 	init_lcd();
    
    
-   while(1)
-   {
-	     
-	   //while(ADCSRA & (1 << ADSC)); //Wait til completion
-
-		//if(ldr_getlux(ADCH) < 6200) {
-			//repeat_write("IN RANGE");
-		//}
-		//else {
-			//repeat_write("OUT OF RANGE");
-		//}
-		//sprintf(text, "Value is: %d", ldr_getlux(ADCH));
-		//repeat_write(text);
-   }
+   while(1) {}
    
    return 0;
 }

@@ -45,6 +45,7 @@ uint16_t get_ldr_value() {
 }
 
 int check_state() {
+	
 	uint16_t ldr_value = get_ldr_value();
 	if (ldr_value > LDR_LOW) {
 		return 1;
