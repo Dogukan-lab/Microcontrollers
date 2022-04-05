@@ -28,6 +28,18 @@
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.49.1" />
+  </dependencies>
+</framework-data>
+    </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -89,6 +101,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="command_center\command_center.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="command_center\command_center.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lcd\lcd.c">
       <SubType>compile</SubType>
     </Compile>
@@ -108,6 +126,7 @@
   <ItemGroup>
     <Folder Include="lcd" />
     <Folder Include="ldr" />
+    <Folder Include="command_center" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
