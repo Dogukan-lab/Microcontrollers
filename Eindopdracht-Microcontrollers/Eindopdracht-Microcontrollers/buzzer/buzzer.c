@@ -15,7 +15,7 @@
 #define MAX_WAIT_DURATION 32
 
 // Octave
-MELODY octave[] = {{c4, 2}, {d4, 2}, {e4, 2}, {f4, 2}, {g4, 2}, {a4, 2}, {h4, 2}, {c5, 2}, {NO_NOTES, MUSIC_END}};
+MELODY octave[] = {{c4, 2}, {d4, 2}, {e4, 2}, {f4, 2}, {g4, 2}, {a4, 2}, {h4, 2}, {c5, 2}, {c4, MUSIC_END}};
 	
 
 MELODY star_wars[] = 
@@ -100,8 +100,9 @@ void play_music(MELODY music_notes[], uint8_t tempo ) {
 void start_music()
 {
 	init_music();
-	while(1) {
-		play_music(octave, 80);
-		_delay_ms(1000);	
-	}
+	_delay_ms(10);
+	
+	play_music(octave, 80);
+	_delay_ms(1000);	
+
 }
