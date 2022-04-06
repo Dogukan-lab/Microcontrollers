@@ -12,6 +12,8 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "ldr.h"
+#include "../command_center/command_center.h"
+#include "../lcd/lcd.h"
 
 #define BIT(x) (1 << (x))
 
@@ -45,16 +47,29 @@ uint16_t get_ldr_value() {
 }
 
 int check_state() {
-	
 	uint16_t ldr_value = get_ldr_value();
 	if (ldr_value > LDR_LOW) {
 		return 1;
 	}
-
 	return 0;	
 }
 
-
+/*
+ * Timer interrupt
+ * After TIMER_TRIGGER_VAL reached check state of LDR
+ */
+ISR(TIMER2_COMP_vect) {
+	if (OCR2 == TIMER_TRIGGER_VAL) {
+		OCR2 = 0; // Reset Comparator
+		
+		if(check_state()) {
+			check_program_state(LASER_DETECTION_OFF);
+		}
+	} 
+	else {
+		OCR2 = TIMER_TRIGGER_VAL; // Reset Comparator
+	}
+}
 
 /*
  * Initializes all components for LDR reading
@@ -62,6 +77,10 @@ int check_state() {
 void init_ldr(void) {
 	DDRA = 0xFF;
 	DDRF = 0x00;
+	
+	TIMSK |= (1 << 7); //Sets interrupt for timer 2
+	TCCR2 |= 0b00001101; //set CTC mode
+	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
 	
 	adcInit();
 	_delay_ms(100);
@@ -75,6 +94,7 @@ void init_ldr(void) {
 void start_timer() {
 	TCCR2 |= 0b00001101; //set CTC mode
 	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
+	lcd_clear();
 }
 
 /*
