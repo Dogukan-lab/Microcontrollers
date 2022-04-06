@@ -15,7 +15,6 @@
 	$Revision: 142 $
 */
 
-
 #define F_CPU 8e6
 
 #include <avr/io.h>
@@ -27,11 +26,36 @@
 /// Default volume, value assigned to OCR1B
 #define DEFAULT_VOLUME 100
 
+// Octave
+melody octave = {c4, 8}, {d4, 8}, {e4, 8}, {f4, 8}, {g4, 8}, {a4, 8}, {h4, 8}, {c5, 8}, {MUSIC_END, 0};
+	
+// Star Wars
+melody starwars = 
+	{Ais2,8}, {Ais2,8},{ P,16}, {F3,8}, {F3,8}, {P,16}, {Dis3,16}, {P,16}, {D3,16}, {P,16}, {C3,16}, {P,16}, {Ais3,8},
+	{Ais3,8}, {P,16}, {F3,8}, {P,16}, {Dis3,16}, {P,16}, {D3,16}, {P,16}, {C3,16}, {P,16}, {Ais3,8}, {Ais3,8}, {P,16},
+	{F3,8}, {P,16}, {Dis3,16}, {P,16}, {D3,16}, {P,16}, {Dis3,16}, {P,16}, {C3,8}, {C3,8}, 
+	{MUSIC_END, 0};
+
+// Fur Elise
+melody furelise = 
+    {e4, 8}, {d4x, 8}, {e4, 8}, {d4x, 8}, {e4, 8}, {b3, 8}, {d4, 8}, {c4, 8}, {a3,8}, {p, 8},
+    {c3, 8}, {e3, 8}, {a3, 8},  {b3, 4}, {p, 8}, {e3, 8}, {g3x, 8}, {b3, 8}, {c4, 4}, {p, 8}, {e3, 8},
+    {e3, 8}, {d4x, 8}, {e4, 8}, {d4x, 8}, {e4, 8}, {b3, 8}, {d4, 8}, {c4, 8}, {a3, 8}, {p, 8}, {c3, 8},
+    {e3, 8}, {a3, 8}, {b3, 4}, {p, 8}, {e3, 8}, {c4, 8}, {b3, 8}, {a3, 4},
+    {MUSIC_END, 0};
+
+// Beatles, Hey Jude
+melody Jude = 
+	{G2,8}, {E2,8}, {P,16}, {E2,16}, {E2,16}, {G2,16}, {A2,16}, {D2,8}, {P,16}, {D2,16}, {E2,16}, {F2,8}, 
+	{C3,8}, {C3,16}, {C3,16}, {H2,16}, {G2,16}, {A2,16}, {G2,16}, {F2,16}, {E2,8}, {P,16}, {G2,16}, 
+	{A2,16}, {A2,8}, {A2,16}, {D3,16}, {C3,16}, {H2,16}, {H2,16}, {C3,16}, {A2,16}, {G2,8}, {P,16}, 
+	{C2,16}, {D2,16}, {E2,16}, {A2,16}, {A2,16}, {G2,8},
+	{MUSIC_END, 0};
+
 /**
 	Initialize timer1
 	PWM output on OCR1B
 */
-
 void InitMusic()
 {
 	// Configure OC1B pin as output
@@ -45,28 +69,19 @@ void InitMusic()
 						 //prescaler(8)
 }
 
-
 /*
  * Plays music.
  */
-
-void PlayMusic( const int* pMusicNotes /** Pointer to table containing music data */,
+void PlayMusic( struct pMusicNotes /** Pointer to table containing music data */,
 				uint8_t tempo /** paying tempo from 0 to 100. Higher value = slower playback*/ )
 {
-	int duration;
-	int note;
 	int i;
+	int j;
 	uint16_t delay = tempo * 1000;
 
-	while( *pMusicNotes )
+	while(*pMusicNotes)
 	{
-		note = *pMusicNotes;
-		pMusicNotes++;
-
-		duration = *pMusicNotes;
-		pMusicNotes++;
-
-		if( p == note )
+		if( p == *pMusicNotes.note[j] )
 		{
 			//pause, do not generate any sound
 			OCR1B = 0;
@@ -77,16 +92,17 @@ void PlayMusic( const int* pMusicNotes /** Pointer to table containing music dat
 			OCR1B = DEFAULT_VOLUME;
 
 			//set frequency
-			ICR1H = (note >> 8);
-			ICR1L = note;
+			ICR1H = (*pMusicNotes.note[j] >> 8);
+			ICR1L = *pMusicNotes.note[j];
 		}
 
 		//wait duration
-		for(i=0;i<32-duration;i++)
+		for(i=0 ; i<32-*pMusicNotes.duration[j] ; i++)
 		{
-			_delay_loop_2( delay );
+			_delay_loop_2(delay);
 		}
-
+		
+		j++;
 	}
 	
 
@@ -94,45 +110,13 @@ void PlayMusic( const int* pMusicNotes /** Pointer to table containing music dat
 	OCR1B = 0;
 }
 
-const int octave[] = {c4, 8, d4, 8, e4, 8, f4, 8, g4, 8, a4, 8, h4, 8, c5, 8, MUSIC_END};
-
-
-// Star Wars
-const int starwars[] = 
-{
-	Ais2,8, Ais2,8, P,16, F3,8, F3,8, P,16, Dis3,16, P,16, D3,16, P,16, C3,16, P,16, Ais3,8,
-	Ais3,8, P,16, F3,8, P,16, Dis3,16, P,16, D3,16, P,16, C3,16, P,16, Ais3,8, Ais3,8, P,16,
-	F3,8, P,16, Dis3,16, P,16, D3,16, P,16, Dis3,16, P,16, C3,8, C3,8, 
-	MUSIC_END
-};
-
-// Fur Elise
-const int furelise[] = 
-{
-    e4, 8, d4x, 8, e4, 8, d4x, 8, e4, 8, b3, 8, d4, 8, c4, 8, a3,8, p, 8,
-    c3, 8, e3, 8, a3, 8,  b3, 4, p, 8, e3, 8, g3x, 8, b3, 8, c4, 4, p, 8, e3, 8,
-    e3, 8, d4x, 8, e4, 8, d4x, 8, e4, 8, b3, 8, d4, 8, c4, 8, a3, 8, p, 8, c3, 8,
-    e3, 8, a3, 8, b3, 4, p, 8, e3, 8, c4, 8, b3, 8, a3, 4,
-    MUSIC_END
-};
-
-// Beatles, Hey Jude
-const int Jude[] = {
-	G2,8, E2,8, P,16, E2,16, E2,16, G2,16, A2,16, D2,8, P,16, D2,16, E2,16, F2,8, 
-	C3,8, C3,16, C3,16, H2,16, G2,16, A2,16, G2,16, F2,16, E2,8, P,16, G2,16, 
-	A2,16, A2,8, A2,16, D3,16, C3,16, H2,16, H2,16, C3,16, A2,16, G2,8, P,16, 
-	C2,16, D2,16, E2,16, A2,16, A2,16, G2,8,
-	MUSIC_END
-};
-
-
 void start_music()
 {
 	InitMusic();
 
 	while(1)
 	{	
-		PlayMusic( octave, 40 );
+		PlayMusic(octave, 40);
 		_delay_ms(1000);
 	}
 
