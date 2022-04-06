@@ -97,6 +97,9 @@ void play_music(MELODY music_notes[], uint8_t tempo ) {
 	OCR1B = 0;
 }
 
+/*
+ * Starts the melody that has to be played
+ */
 void start_music()
 {
 	init_music();

@@ -18,7 +18,6 @@ typedef enum {
 	} PROGRAM_STATE;		// States of program
 
 void check_program_state(PROGRAM_STATE state);
-void set_program_state(PROGRAM_STATE changed_state);
 void welcome_customer();
 
 #endif /* COMMAND_CENTER_H_ */

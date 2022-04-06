@@ -56,9 +56,6 @@ void set_program_state(PROGRAM_STATE state) {
 }
 
 void welcome_customer() {
-	//State van laser triggered
-	//LCD write "Welcome ...."
-	//Buzzer melodie aanroepen
 	lcd_clear();
 	lcd_write_string("Welcome customer");
 	start_music();
