@@ -29,7 +29,7 @@ void program_init() {
  * When interrupt for button is pressed,
  * Laser will go back to normal functionality
  */
-void check_program_state(PROGRAM_STATE state) {
+void set_program_state(PROGRAM_STATE state) {
 	switch(state) {
 		case STARTUP:
 			program_init();
@@ -43,7 +43,6 @@ void check_program_state(PROGRAM_STATE state) {
 		case LASER_DETECTION_OFF:
 			// Disable timer 2
 			stop_timer();
-			lcd_write_string("OFF");
 			check_program_state(BUZZER_ON);
 			break;
 		case BUZZER_ON:
@@ -56,15 +55,11 @@ void check_program_state(PROGRAM_STATE state) {
 	}
 }
 
-void set_program_state(PROGRAM_STATE changed_state) {
-	state = changed_state;
-}
-
 void welcome_customer() {
 	//State van laser triggered
 	//LCD write "Welcome ...."
 	//Buzzer melodie aanroepen
-	
+	lcd_clear();
 	lcd_write_string("Welcome customer");
 	start_music();
 }
