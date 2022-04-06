@@ -73,15 +73,15 @@ void test_code() {
 int main(void) {
 	
 	sei(); // Turn on interrupts
-	
-	init_interrupt_0();
-	init_timer();
-	
-	init_ldr();
-	
-	init_lcd();
-   
-   //start_music();
+	//
+	//init_interrupt_0();
+	//init_timer();
+	//
+	//init_ldr();
+	//
+	//init_lcd();
+   //
+   start_music();
    
    while(1) {
 	   

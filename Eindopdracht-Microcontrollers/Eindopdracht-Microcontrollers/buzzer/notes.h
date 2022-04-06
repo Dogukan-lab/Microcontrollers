@@ -25,7 +25,7 @@ void start_music();
 typedef struct {
 	int note;
 	int duration;
-	} melody;
+	} MELODY;
 
 /* There are 12 notes in octave + variations (lower case, other names)  */
 
