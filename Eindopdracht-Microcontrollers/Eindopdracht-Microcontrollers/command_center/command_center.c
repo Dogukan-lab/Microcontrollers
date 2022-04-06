@@ -11,6 +11,7 @@
 #include <util/delay.h>
 
 #include "command_center.h"
+#include "../buzzer/notes.h"
 #include "../ldr/ldr.h"
 #include "../lcd/lcd.h"
 
@@ -43,8 +44,10 @@ void check_program_state(PROGRAM_STATE state) {
 			// Disable timer 2
 			stop_timer();
 			lcd_write_string("OFF");
+			check_program_state(BUZZER_ON);
 			break;
 		case BUZZER_ON:
+			welcome_customer();
 			// Enable melody
 			break;
 		case BUZZER_OFF:
@@ -61,5 +64,8 @@ void welcome_customer() {
 	//State van laser triggered
 	//LCD write "Welcome ...."
 	//Buzzer melodie aanroepen
+	
+	lcd_write_string("Welcome customer");
+	start_music();
 }
 

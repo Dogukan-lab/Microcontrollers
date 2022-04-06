@@ -49,10 +49,10 @@ void test_code() {
 int main(void) {
 	
 	sei(); // Turn on interrupts
-	
-	check_program_state(STARTUP);
-	
 	init_interrupt_0();
+	
+	check_program_state(STARTUP);	//	Starts program
+	
    
    while(1) {}
    
