@@ -10,6 +10,7 @@
 #include <xc.h>
 #include <stdio.h>
 #include <util/delay.h>
+#include <avr/io.h>
 #include "ldr/ldr.h"
 #include "lcd/lcd.h"
 #include <avr/interrupt.h>
@@ -41,11 +42,8 @@ ISR(TIMER2_COMP_vect) {
 	if (OCR2 == TIMER_TRIGGER_VAL) {
 		OCR2 = 0; // Reset Comparator
 		switch(check_state()){
-			case 0:
-				repeat_write("LASER ON");
-				break;
 			case 1:
-				repeat_write("Welcome customer!");
+				lcd_write_string("Welcome customer!");
 				stop_timer();
 				break;
 		}
@@ -83,8 +81,11 @@ int main(void) {
 	
 	init_lcd();
    
+   //start_music();
    
-   while(1) {}
+   while(1) {
+	   
+   }
    
    return 0;
 }

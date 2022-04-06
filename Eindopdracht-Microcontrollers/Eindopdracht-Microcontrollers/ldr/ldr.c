@@ -12,6 +12,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "ldr.h"
+#include "../lcd/lcd.h"
 
 #define BIT(x) (1 << (x))
 
@@ -50,7 +51,6 @@ int check_state() {
 	if (ldr_value > LDR_LOW) {
 		return 1;
 	}
-
 	return 0;	
 }
 
@@ -62,6 +62,9 @@ int check_state() {
 void init_ldr(void) {
 	DDRA = 0xFF;
 	DDRF = 0x00;
+	
+	TCCR2 |= 0b00001101; //set CTC mode
+	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
 	
 	adcInit();
 	_delay_ms(100);
@@ -75,6 +78,7 @@ void init_ldr(void) {
 void start_timer() {
 	TCCR2 |= 0b00001101; //set CTC mode
 	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
+	lcd_clear();
 }
 
 /*

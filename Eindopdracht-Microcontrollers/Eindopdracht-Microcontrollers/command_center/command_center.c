@@ -20,3 +20,10 @@
 	//*state = TRIGGERED;
 	//return *state;
 //}
+
+void welcome_customer() {
+	//State van laser triggered
+	//LCD write "Welcome ...."
+	//Buzzer melodie aanroepen
+}
+
