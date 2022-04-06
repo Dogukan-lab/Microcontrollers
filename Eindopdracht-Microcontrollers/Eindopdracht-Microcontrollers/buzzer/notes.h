@@ -9,8 +9,6 @@
 #ifndef NOTES_H_
 #define NOTES_H_
 
-
-
 /* Pause */
 
 #define P 1
@@ -19,8 +17,14 @@
 
 /* end of notes table */
 #define MUSIC_END 0
+#define NO_NOTES 0
 
 void start_music();
+
+typedef struct {
+	int note;
+	int duration;
+	} MELODY;
 
 /* There are 12 notes in octave + variations (lower case, other names)  */
 
