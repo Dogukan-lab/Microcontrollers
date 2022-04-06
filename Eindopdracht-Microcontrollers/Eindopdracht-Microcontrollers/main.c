@@ -11,17 +11,12 @@
 #include <stdio.h>
 #include <util/delay.h>
 #include <avr/io.h>
+#include "command_center/command_center.h"
 #include "ldr/ldr.h"
 #include "lcd/lcd.h"
 #include <avr/interrupt.h>
 
 #define BIT(x) (1 << (x))
-
-void init_timer() {
-	TIMSK |= (1 << 7); //Sets interrupt for timer 2
-	TCCR2 |= 0b00001101; //set CTC mode
-	OCR2 = TIMER_TRIGGER_VAL; //Sets compare value for timer event
-}
 
 void init_interrupt_0() {
 	DDRD = 0x00;
@@ -31,26 +26,7 @@ void init_interrupt_0() {
 }
 
 ISR(INT0_vect) {
-	start_timer();
-}
-
-/*
- * Timer interrupt
- * After TIMER_TRIGGER_VAL reached check state of LDR
- */
-ISR(TIMER2_COMP_vect) {
-	if (OCR2 == TIMER_TRIGGER_VAL) {
-		OCR2 = 0; // Reset Comparator
-		switch(check_state()){
-			case 1:
-				lcd_write_string("Welcome customer!");
-				stop_timer();
-				break;
-		}
-	} 
-	else {
-		OCR2 = TIMER_TRIGGER_VAL; // Reset Comparator
-	}
+	check_program_state(LASER_DETECTION_ON);
 }
 
 void test_code() {
@@ -74,18 +50,11 @@ int main(void) {
 	
 	sei(); // Turn on interrupts
 	
+	check_program_state(STARTUP);
+	
 	init_interrupt_0();
-	init_timer();
-	
-	init_ldr();
-	
-	init_lcd();
    
-   //start_music();
-   
-   while(1) {
-	   
-   }
+   while(1) {}
    
    return 0;
 }

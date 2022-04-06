@@ -84,7 +84,7 @@ void PlayMusic( const int* pMusicNotes /** Pointer to table containing music dat
 		//wait duration
 		for(i=0;i<32-duration;i++)
 		{
-			_delay_loop_2( delay );
+			_delay_loop_2(delay);
 		}
 
 	}
@@ -94,13 +94,16 @@ void PlayMusic( const int* pMusicNotes /** Pointer to table containing music dat
 	OCR1B = 0;
 }
 
-const int octave[] = {c4, 8, d4, 8, e4, 8, f4, 8, g4, 8, a4, 8, h4, 8, c5, 8, MUSIC_END};
+/*
+ * Predefined melodies
+ */
+const int octave[] = {c4, 2, d4, 2, e4, 2, f4, 2, g4, 2, a4, 2, h4, 2, c5, 2, MUSIC_END};
 
 
 // Star Wars
 const int starwars[] = 
 {
-	Ais2,8, Ais2,8, P,16, F3,8, F3,8, P,16, Dis3,16, P,16, D3,16, P,16, C3,16, P,16, Ais3,8,
+	Ais2,8, Ais2,8, P,16, F3, 8, F3,8, P,16, Dis3,16, P,16, D3,16, P,16, C3,16, P,16, Ais3,8,
 	Ais3,8, P,16, F3,8, P,16, Dis3,16, P,16, D3,16, P,16, C3,16, P,16, Ais3,8, Ais3,8, P,16,
 	F3,8, P,16, Dis3,16, P,16, D3,16, P,16, Dis3,16, P,16, C3,8, C3,8, 
 	MUSIC_END
@@ -132,7 +135,7 @@ void start_music()
 
 	while(1)
 	{	
-		PlayMusic( octave, 40 );
+		PlayMusic( octave, 80);
 		_delay_ms(1000);
 	}
 
